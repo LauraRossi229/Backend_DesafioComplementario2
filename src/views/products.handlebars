@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Productos</title>
+  <link rel="stylesheet" href="/css/products.style.css">
+</head>
+<body>
+
+  <h2>Bienvenido, {{ userData.first_name }} {{ userData.last_name }}</h2>
+ 
+  <h1>Lista de Productos</h1>
+  <!-- Filtrar por cantidad -->
+  <label for="filterQuantity">Filtrar por cantidad:</label>
+  <select id="filterQuantity">
+    <option value="all">Todas</option>
+    <option value="1">1 o más</option>
+    <option value="2">2 o más</option>
+    <option value="5">5 o más</option>
+  </select>
+
+  <!-- Ordenar por precio -->
+  <button id="sortAscButton">Ordenar por precio ascendente</button>
+  <button id="sortDescButton">Ordenar por precio descendente</button>
+
+  <ul id="productList" class="product-list">
+    {{#each products.docs}}
+      <li class="product-item" data-price="{{this.price}}" data-quantity="{{this.stock}}">
+        <div class="product-info">
+          <span class="product-title">{{this.title}}</span>
+          <span class="product-price">$ {{this.price}}</span>
+        </div>
+        <div class="product-actions">
+          <button class="addToCartButton" data-id="{{this._id}}">Agregar al carrito</button>
+          <a href="/products/{{this._id}}">Detalles</a>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+
+  <!-- Formularios -->
+  <form action="/api/sessions/logout" method="POST">
+    <button type="submit">Cerrar Sesión</button>
+  </form>
+  <form action="/api/sessions/login" method="POST">
+    <button type="submit">Iniciar Sesión</button>
+  </form>
+  <form action="/api/users/" method="POST">
+    <button type="submit">Registrarse</button>
+  </form>
+
+  <script src="/js/products.js"></script>
+  
+</body>
+</html>

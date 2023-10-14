@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/chat.js"></script>
+   <script src="/js/script.js"></script>
+
+  <title>Chat</title>
+</head>
+<body>
+  <h1>Chat</h1>
+
+  <div id="chat-box">
+    {{#each messages}}
+      <p><strong>{{this.email}}:</strong> {{this.message}}</p>
+    {{/each}}
+  </div>
+
+  <form id="message-form">
+    <input type="email" id="email-input" name="email" placeholder="Email">
+    <input type="text" id="message-input" name="message" placeholder="Mensaje">
+    <button type="submit">Enviar</button>
+  </form>
+</body>
+</html>
+
+

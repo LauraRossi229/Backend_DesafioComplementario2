@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Detalle del Carrito</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Detalle del Carrito</h1>
+  
+  <!-- Muestra los productos en el carrito -->
+  <ul>
+    {{#each cart.products}}
+      <li>
+        Producto: {{this.id_prod.title}} - Cantidad: {{this.quantity}}
+      </li>
+    {{/each}}
+  </ul>
+
+  <!-- Agrega un botón para volver a la lista de productos o hacer otras acciones -->
+  <a href="/products">Volver a la lista de productos</a>
+</body>
+</html>
